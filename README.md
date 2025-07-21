@@ -1,8 +1,8 @@
-# 🕰️ TimeScope - Historical Time Viewer
+# 🕰️  - Historical Time Viewer
 
 A beautiful, interactive web application that lets you explore history through time. Journey through any date in history and discover events, inventions, cultural movements, and notable figures with a focus on Indian historical heritage.
 
-![TimeScope Banner](https://img.shields.io/badge/TimeScope-Historical%20Time%20Viewer-purple?style=for-the-badge&logo=clock)
+![ChronoScope Banner](https://img.shields.io/badge/ChronoScope-Historical%20Time%20Viewer-purple?style=for-the-badge&logo=clock)
 
 ## ✨ Features
 
@@ -43,8 +43,8 @@ A beautiful, interactive web application that lets you explore history through t
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/timescope-app.git
-   cd timescope-app
+   git clone https://github.com/yourusername/ChronoScope-app.git
+   cd ChronoScope-app
    ```
 
 2. **Install dependencies**
@@ -90,7 +90,7 @@ A beautiful, interactive web application that lets you explore history through t
 ## 📁 Project Structure
 
 ```
-timescope-app/
+ChronoScope-app/
 ├── app/                          # Next.js App Router
 │   ├── globals.css              # Global styles
 │   ├── layout.tsx               # Root layout
@@ -245,9 +245,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/timescope-app/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/timescope-app/discussions)
-- **Email**: support@timescope.app
+- **Issues**: [GitHub Issues](https://github.com/yourusername/ChronoScope-app/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/ChronoScope-app/discussions)
+- **Email**: support@ChronoScope.app
 
 ## 🔮 Roadmap
 
@@ -269,12 +269,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ for history enthusiasts and the preservation of Indian heritage**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/timescope-app)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/timescope-app?style=social)](https://github.com/yourusername/timescope-app)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/timescope-app?style=social)](https://github.com/yourusername/timescope-app/fork)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/ChronoScope-app)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/ChronoScope-app?style=social)](https://github.com/yourusername/ChronoScope-app)
+[![GitHub forks](https://img.shields.io/github/forks/yourusername/ChronoScope-app?style=social)](https://github.com/yourusername/ChronoScope-app/fork)
 ```
 
-This comprehensive README file covers all aspects of the TimeScope application, including:
+This comprehensive README file covers all aspects of the ChronoScope application, including:
 
 🎯 **Key Highlights:**
 - **Professional Structure**: Clear sections with proper markdown formatting
