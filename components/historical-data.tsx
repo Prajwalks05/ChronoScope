@@ -129,11 +129,10 @@ const EventPopup = ({ event, isOpen, onClose }: EventPopupProps) => {
           <div className="flex items-start justify-between p-6 border-b border-white/10 bg-white/5">
             <div className="flex items-center gap-4">
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                  event.country === "India"
-                    ? "bg-gradient-to-r from-orange-500 to-green-500"
-                    : "bg-gradient-to-r from-purple-500 to-blue-500"
-                }`}
+                className={`w-12 h-12 rounded-full flex items-center justify-center ${event.country === "India"
+                  ? "bg-gradient-to-r from-orange-500 to-green-500"
+                  : "bg-gradient-to-r from-purple-500 to-blue-500"
+                  }`}
               >
                 {event.icon}
               </div>
@@ -143,11 +142,10 @@ const EventPopup = ({ event, isOpen, onClose }: EventPopupProps) => {
                   <p className="text-white/70 text-lg">{event.year}</p>
                   {event.country && (
                     <Badge
-                      className={`${
-                        event.country === "India"
-                          ? "bg-orange-500/20 text-orange-300 border-orange-500/30"
-                          : "bg-blue-500/20 text-blue-300 border-blue-500/30"
-                      }`}
+                      className={`${event.country === "India"
+                        ? "bg-orange-500/20 text-orange-300 border-orange-500/30"
+                        : "bg-blue-500/20 text-blue-300 border-blue-500/30"
+                        }`}
                     >
                       {event.country}
                     </Badge>
@@ -173,9 +171,8 @@ const EventPopup = ({ event, isOpen, onClose }: EventPopupProps) => {
                 {[...Array(8)].map((_, i) => (
                   <div
                     key={i}
-                    className={`h-4 bg-white/20 rounded animate-pulse ${
-                      i === 2 ? "w-3/4" : i === 4 ? "w-1/2" : i === 6 ? "w-5/6" : "w-full"
-                    }`}
+                    className={`h-4 bg-white/20 rounded animate-pulse ${i === 2 ? "w-3/4" : i === 4 ? "w-1/2" : i === 6 ? "w-5/6" : "w-full"
+                      }`}
                   ></div>
                 ))}
               </div>
@@ -274,6 +271,7 @@ const EventPopup = ({ event, isOpen, onClose }: EventPopupProps) => {
                 )
               }
             >
+              Learn More
               <ExternalLink className="w-4 h-4 mr-2" />
               Learn More
             </Button>
@@ -358,7 +356,7 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
             category: "invention",
             icon: <Lightbulb className="w-4 h-4" />,
             year: date.getFullYear(),
-            videoId: "3gOR91oentQ",
+            // videoId: "3gOR91oentQ",
           },
           {
             id: "alt-2",
@@ -367,7 +365,7 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
             category: "culture",
             icon: <Film className="w-4 h-4" />,
             year: date.getFullYear(),
-            videoId: "fHeAHaxW0nI",
+            // videoId: "fHeAHaxW0nI",
           },
           {
             id: "alt-3",
@@ -376,7 +374,7 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
             category: "invention",
             icon: <Lightbulb className="w-4 h-4" />,
             year: date.getFullYear(),
-            videoId: "3gOR91oentQ",
+            // videoId: "3gOR91oentQ",
           },
         ])
         setContextTags(["Alternative Timeline", "Steampunk Era", "What If History"])
@@ -867,11 +865,10 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
                 <Badge
                   key={index}
                   variant="outline"
-                  className={`${
-                    tag.includes("Indian")
-                      ? "bg-orange-500/10 text-orange-300 border-orange-500/30"
-                      : "bg-white/10 text-white/80 border-white/30"
-                  }`}
+                  className={`${tag.includes("Indian")
+                    ? "bg-orange-500/10 text-orange-300 border-orange-500/30"
+                    : "bg-white/10 text-white/80 border-white/30"
+                    }`}
                 >
                   {tag}
                 </Badge>
@@ -927,21 +924,19 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
               }}
             >
               <Card
-                className={`p-6 backdrop-blur-md border transition-all duration-300 ease-out cursor-pointer group ${
-                  event.country === "India"
-                    ? "bg-orange-500/5 border-orange-500/20 hover:bg-orange-500/10"
-                    : "bg-white/10 border-white/20 hover:bg-white/15"
-                }`}
+                className={`p-6 backdrop-blur-md border transition-all duration-300 ease-out cursor-pointer group ${event.country === "India"
+                  ? "bg-orange-500/5 border-orange-500/20 hover:bg-orange-500/10"
+                  : "bg-white/10 border-white/20 hover:bg-white/15"
+                  }`}
                 onClick={() => handleEventClick(event)}
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${
-                        event.country === "India"
-                          ? "bg-gradient-to-r from-orange-500/20 to-green-500/20 border border-orange-500/30"
-                          : getCategoryColor(event.category)
-                      }`}
+                      className={`w-10 h-10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200 ${event.country === "India"
+                        ? "bg-gradient-to-r from-orange-500/20 to-green-500/20 border border-orange-500/30"
+                        : getCategoryColor(event.category)
+                        }`}
                     >
                       {event.icon}
                     </div>
@@ -950,11 +945,10 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
                       <h3
-                        className={`text-lg font-semibold transition-colors ${
-                          event.country === "India"
-                            ? "text-orange-100 group-hover:text-orange-50"
-                            : "text-white group-hover:text-purple-200"
-                        }`}
+                        className={`text-lg font-semibold transition-colors ${event.country === "India"
+                          ? "text-orange-100 group-hover:text-orange-50"
+                          : "text-white group-hover:text-purple-200"
+                          }`}
                       >
                         {event.title}
                       </h3>
@@ -966,11 +960,10 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
                       )}
                       {event.source && (
                         <Badge
-                          className={`text-xs ${
-                            event.source.includes("Indian")
-                              ? "bg-orange-500/20 text-orange-300 border-orange-500/30"
-                              : "bg-green-500/20 text-green-300 border-green-500/30"
-                          }`}
+                          className={`text-xs ${event.source.includes("Indian")
+                            ? "bg-orange-500/20 text-orange-300 border-orange-500/30"
+                            : "bg-green-500/20 text-green-300 border-green-500/30"
+                            }`}
                         >
                           {event.source}
                         </Badge>
@@ -978,11 +971,10 @@ export default function HistoricalData({ date, isAltHistory, onAddToFavorites, i
                     </div>
                     <p className="text-white/70 leading-relaxed mb-2">{event.description}</p>
                     <p
-                      className={`text-sm font-medium transition-colors ${
-                        event.country === "India"
-                          ? "text-orange-300 group-hover:text-orange-200"
-                          : "text-purple-300 group-hover:text-purple-200"
-                      }`}
+                      className={`text-sm font-medium transition-colors ${event.country === "India"
+                        ? "text-orange-300 group-hover:text-orange-200"
+                        : "text-purple-300 group-hover:text-purple-200"
+                        }`}
                     >
                       Click to read detailed information →
                     </p>

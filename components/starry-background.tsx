@@ -16,8 +16,18 @@ interface Star {
 export default function StarryBackground() {
   const [stars, setStars] = useState<Star[]>([])
   const [time, setTime] = useState(0)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const updateSize = () => {
+      setDimensions({ width: window.innerWidth, height: window.innerHeight })
+    }
+
+    updateSize()
+    window.addEventListener("resize", updateSize)
+
     // Generate initial stars
     const initialStars: Star[] = []
     for (let i = 0; i < 200; i++) {
@@ -59,11 +69,14 @@ export default function StarryBackground() {
       )
     }, 50)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener("resize", updateSize)
+    }
   }, [])
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Deep space gradient background */}
       <div className="absolute inset-0 bg-gradient-radial from-indigo-950/20 via-purple-950/40 to-black"></div>
 
@@ -71,56 +84,30 @@ export default function StarryBackground() {
       <div className="absolute inset-0">
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-purple-500/10 via-blue-500/5 to-transparent rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-radial from-cyan-500/8 via-teal-500/4 to-transparent rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-            delay: 2,
-          }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
         <motion.div
           className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-radial from-pink-500/6 via-purple-500/3 to-transparent rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-            delay: 4,
-          }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
         />
       </div>
 
-      {/* Animated stars */}
-      <div className="absolute inset-0">
-        {stars.map((star) => {
-          // Calculate star position based on perspective
+      {/* Stars */}
+      {dimensions.width > 0 &&
+        stars.map((star) => {
           const perspective = 1000
           const scale = perspective / (perspective + star.z)
-          const x = star.x * scale + window.innerWidth / 2
-          const y = star.y * scale + window.innerHeight / 2
+          const x = star.x * scale + dimensions.width / 2
+          const y = star.y * scale + dimensions.height / 2
           const size = star.size * scale
           const opacity = star.opacity * scale
-
-          // Create trail effect for faster stars
           const trailLength = Math.max(0, (1000 - star.z) / 100)
 
           return (
@@ -133,7 +120,6 @@ export default function StarryBackground() {
                 transform: "translate(-50%, -50%)",
               }}
             >
-              {/* Star trail */}
               {trailLength > 2 && (
                 <div
                   className="absolute bg-gradient-to-t from-white/20 to-transparent blur-sm"
@@ -146,8 +132,6 @@ export default function StarryBackground() {
                   }}
                 />
               )}
-
-              {/* Main star */}
               <div
                 className="bg-white rounded-full shadow-lg"
                 style={{
@@ -160,35 +144,33 @@ export default function StarryBackground() {
             </div>
           )
         })}
-      </div>
 
       {/* Shooting stars */}
-      <div className="absolute inset-0">
-        {[...Array(3)].map((_, i) => (
+      {dimensions.width > 0 &&
+        [...Array(3)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 50}%`,
+              left: `${Math.random() * dimensions.width}px`,
+              top: `${Math.random() * (dimensions.height * 0.5)}px`,
             }}
             animate={{
-              x: [0, window.innerWidth],
-              y: [0, window.innerHeight * 0.3],
+              x: [0, dimensions.width],
+              y: [0, dimensions.height * 0.3],
               opacity: [0, 1, 0],
               scale: [0, 1, 0],
             }}
             transition={{
               duration: 2 + Math.random() * 3,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: Infinity,
               delay: Math.random() * 10,
               ease: "easeOut",
             }}
           />
         ))}
-      </div>
 
-      {/* Time particles - subtle floating elements */}
+      {/* Floating time particles */}
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -205,7 +187,7 @@ export default function StarryBackground() {
             }}
             transition={{
               duration: 6 + Math.random() * 4,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: Infinity,
               delay: Math.random() * 5,
               ease: "easeInOut",
             }}
@@ -213,8 +195,8 @@ export default function StarryBackground() {
         ))}
       </div>
 
-      {/* Subtle vignette effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/30"></div>
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/30" />
     </div>
   )
 }
